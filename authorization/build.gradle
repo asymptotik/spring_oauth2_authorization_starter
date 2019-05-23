@@ -1,0 +1,24 @@
+plugins {
+    id "war"
+}
+
+war {
+	enabled=true
+}
+
+dependencies {
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.8"
+    implementation ("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: 'spring-boot-starter-tomcat'
+    }
+    implementation "org.springframework.boot:spring-boot-starter-jdbc"
+    
+    implementation "org.springframework.boot:spring-boot-starter-security"
+    
+    implementation "org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.5.RELEASE"
+    
+    implementation "mysql:mysql-connector-java"
+
+    compileOnly "javax.servlet:javax.servlet-api"
+
+}
