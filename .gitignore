@@ -1,5 +1,8 @@
 .DS_Store
 
+#Files with secrets
+web/src/main/resources/application-dev.yaml
+
 tomcat/
 tomcat-base/
 
