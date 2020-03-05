@@ -15,8 +15,7 @@
     <appender name="RollingFile"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOGS}/spring-boot-logger.log</file>
-        <encoder
-                class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <encoder>
             <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
         </encoder>
 
@@ -30,7 +29,6 @@
             <maxHistory>10</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
-
     </appender>
 
     <!-- LOG everything at WARN level -->
@@ -42,6 +40,10 @@
     <!-- LOG "com.baeldung*" at TRACE level -->
     <logger name="com.asymptotik" level="trace" additivity="false">
         <appender-ref ref="RollingFile" />
+        <appender-ref ref="Console" />
+    </logger>
+
+    <logger name="org.springframework.boot.autoconfigure.security" level="info" additivity="false">
         <appender-ref ref="Console" />
     </logger>
 

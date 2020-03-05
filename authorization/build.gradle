@@ -20,5 +20,4 @@ dependencies {
     implementation "mysql:mysql-connector-java"
 
     compileOnly "javax.servlet:javax.servlet-api"
-
 }

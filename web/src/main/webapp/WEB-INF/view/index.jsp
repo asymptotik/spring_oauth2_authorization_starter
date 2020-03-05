@@ -12,7 +12,13 @@
 <body>
     <h1>Hello!</h1>
     <div class="container unauthenticated">
-        With Facebook: <a href="/rnd_gradle/login">click here</a>
+        With Asymptotik: <a href="/web/login/asymptotik">click here</a>
+    </div>
+    <div class="container unauthenticated">
+        With Facebook: <a href="/web/login/facebook">click here</a>
+    </div>
+    <div class="container unauthenticated">
+        With GitHub: <a href="/web/login/github">click here</a>
     </div>
     <div class="container authenticated">
         Logged in as: <span id="user"></span>
@@ -21,13 +27,13 @@
         </div>
     </div>
     <script type="text/javascript">
-        $.get("/rnd_gradle/user", function(data) {
+        $.get("/web/user", function(data) {
             $("#user").html(data.userAuthentication.details.name);
             $(".unauthenticated").hide()
             $(".authenticated").show()
         })
         .fail(function(jqXHR, textStatus, errorThrown ) {
-            if( jqXHR.status === 401 ) {
+            if( jqXHR.status === 401 || jqXHR.status === 403 ) {
                 $(".unauthenticated").show();
                 $(".authenticated").hide();
             } else {
@@ -36,7 +42,7 @@
         });
 
         var logout = function() {
-            $.post("/rnd_gradle/logout", function() {
+            $.post("/web/logout", function() {
                 $("#user").html('');
                 $(".unauthenticated").show();
                 $(".authenticated").hide();
